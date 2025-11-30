@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>BioData</title>
+</head>
+<style>
+header {
+  background-color: black;
+  padding: 1px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+</style>
+
+
+<header> 
+	<center><h1><br>	LogIn 	<br></h1></center>
+</header>
+<body style="background-color:black;color:white;padding:200px;
+text-align: center;">
+
+<div style="background-color:darkgrey;color:white;padding:200px;">
+
+<h2>Gym Membership</h2>
+    <form method="POST">
+        {% csrf_token %}
+	
+    <label>Name:</label>
+    <input type="text" name="Name" placeholder="" />
+    <br><br>
+    <label>Password:</label>
+    <input type="text" name="Pass" placeholder="" />
+    
+    
+    
+    <button type="submit">Sign Up</button>
+        
+         <h3> {{response}} </h3>
+</div>        
+
+    
+    </form>
+    
+    
+    
+</body>
+
+</html>
+

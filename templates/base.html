@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    {% load static %}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-inner">
+            <a class="brand" href="{% url 'index' %}">Kylee and Davene</a>
+            <nav class="nav-links">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'projects' %}">Projects</a>
+                <a href="{% url 'about' %}">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-wrap">
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">Kylee and Davene</div>
+                <div class="footer-links">&copy; {% now "Y" %} — Built with Django</div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

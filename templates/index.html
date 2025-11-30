@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ title }}{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">Hi, we are <span class="accent">{{ name }}</span></h1>
+        <p class="hero-sub">{{ summary }}</p>
+        <div class="hero-ctas">
+          <a class="button" href="{% url 'projects' %}">View Projects</a>
+          <a class="button ghost" href="{% url 'about' %}">About</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <h3>Featured Works</h3>
+          <ul class="featured-list">
+            <li>Game Dev — engine prototypes &mdash; Unity / Godot</li>
+            <li>Web Dev — Django apps, APIs, and UX-driven sites</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="featured">
+    <h2>Recent Projects</h2>
+    <div class="projects-grid">
+      {% for p in projects|slice:":4" %}
+        <article class="card">
+          {% if p.image %}
+            <div class="card-image"><img src="{{ p.image.url }}" alt="{{ p.title }}"/></div>
+          {% endif %}
+          <div class="card-body">
+            <h3 class="project-title">{{ p.title }}</h3>
+            <p class="project-desc">{{ p.description|truncatechars:120 }}</p>
+            {% if p.pk %}
+              <a class="button small" href="{% url 'project_detail' p.pk %}">Details</a>
+            {% endif %}
+          </div>
+        </article>
+      {% empty %}
+        <p> Game Dev </p>
+        <p> Web Dev </p>
+        <p> Designer </p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

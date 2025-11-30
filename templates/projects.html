@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - Portfolio{% endblock %}
+
+{% block content %}
+  <h1>Projects</h1>
+  <div class="projects-grid">
+  {% for p in projects %}
+    <article class="card">
+      {% if p.image %}
+        <div class="card-image"><img src="{{ p.image.url }}" alt="{{ p.title }}"/></div>
+      {% endif %}
+      <div class="card-body">
+        <h3 class="project-title">{{ p.title }}</h3>
+        <p class="project-desc">{{ p.description }}</p>
+        {% if p.pk %}
+          <a class="button small" href="{% url 'project_detail' p.pk %}">Details</a>
+        {% elif p.url %}
+          <a class="button small" href="{{ p.url }}" target="_blank">Open</a>
+        {% endif %}
+      </div>
+    </article>
+  {% empty %}
+    <p> Game Creator </p>
+    <p> Web Developer </p>
+    <p> Designer </p>
+    
+
+
+
+  {% endfor %}
+  </div>
+{% endblock %}
